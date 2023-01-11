@@ -29,9 +29,9 @@ const createTodo = async (req, res) => {
     }
 }
 
-const updateTodo = async (req, res) => {
+const updateTodo = async (req, res ) => {
     try {
-        const { id } = req.params
+        const {id} = req.params
         const field = req.body
         const result = await TodosServices.update(id, field)
         res.status(200).json(result)
@@ -40,9 +40,9 @@ const updateTodo = async (req, res) => {
     }
 }
 
-const deleteTodo = async (req, res) => {
+const deleteTodo = async (req, res ) => {
     try {
-        const { id } = req.params
+        const {id } = req.params
         const result = await TodosServices.destroy(id)
         res.status(200).json(result)
     } catch (error) {

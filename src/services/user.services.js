@@ -1,3 +1,4 @@
+const Todos = require('../models/todos.model')
 const Users = require('../models/users.model')
 
 
@@ -18,6 +19,26 @@ class UserServices {
             throw error
         }
     }
+
+    static async getWithTasks(id) {
+        try {
+            const result = await Users.findOne({
+                where: {id},
+                attributes: { exclude: ["password"]},
+            include: {
+                model: Todos,
+                as: 'task',
+                include: {
+                    
+                }
+            }})
+            return result
+        } catch (error) {
+            throw error
+        }
+    }
+
+
     static async create(user) {
         try {
             const result = Users.create(user)
