@@ -96,7 +96,7 @@ app.put('/users/:id', async (req, res) => {
 })
 
 
-//eliminando us
+//eliminando usuarios
 app.delete('/users/:id', async (req, res) => {
     try {
         const { id } = req.params
@@ -156,7 +156,7 @@ app.put('/todos/:id', async (req, res) => {
         const { id } = req.params
         const field = req.body
         const result = await Todos.update(field, {
-            where: {iscomplete}
+            where: {id}
         })
         res.status(200).json(result)
     } catch (error) {
