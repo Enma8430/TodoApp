@@ -28,9 +28,6 @@ class UserServices {
             include: {
                 model: Todos,
                 as: 'task',
-                include: {
-                    
-                }
             }})
             return result
         } catch (error) {

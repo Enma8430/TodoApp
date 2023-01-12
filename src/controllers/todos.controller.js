@@ -50,10 +50,31 @@ const deleteTodo = async (req, res ) => {
     }
 }
 
+const getTodosWithCategories = async  (req, res) => {
+    try {
+        const {id} = req.params
+
+        const result = await TodosServices.getWithCategories(id)
+
+        res.status(200).json({
+            message: 'Enviando tareas con categorias',
+            data: result})
+
+    } catch (error) {
+        res.status(400).json({
+
+            error:error.message,
+            
+            details: error.stack,
+        })
+    }
+}
+
 module.exports = {
     getAllTodos,
     getTodosById,
     createTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    getTodosWithCategories
 }
